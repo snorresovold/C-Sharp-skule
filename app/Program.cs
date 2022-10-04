@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 
 namespace MyApplication
 {
@@ -18,32 +19,11 @@ namespace MyApplication
             absence = StudentAbsence;
         }
     }
+
+
     class Program
     {
-        static void Main(string[] args)
-        {
-            // tomt array som skal holde alle elevene
-            Student[] students = new Student[] { };
-            string input;
-            // infinite loop som programmet kjøres i ganske standard for konsoll applikasjoner
-            while (true)
-            {
-                // bare basic consol commands
-                Console.WriteLine("Hello, welcome to Snorre's Student Administrative system");
-                Console.WriteLine("What would you like to do?");
-                Console.WriteLine("1: Get all students");
-                Console.WriteLine("2: add a new student");
-                input = Console.ReadLine();
-
-            }
-        }
-        // funksjon som har all konsoll logikken
-
-        static void get_students()
-        {
-
-        }
-        static void add_student()
+        static Student add_student()
         {
             //initialiserer variablene så eg kan gi de verdier seinere
             string name;
@@ -60,7 +40,66 @@ namespace MyApplication
             // viser tekst og gjer det samme som koden over men med Ints, ikkje doubles
             Console.WriteLine("how many minutes has the student been absent? (has to be numbers)");
             absence = Int32.Parse(Console.ReadLine());
-            return name, grades, absence
+            Student new_student = new Student(name, grades, absence);
+            return new_student;
+        }
+        static void Main(string[] args)
+        {
+            // tomt array som skal holde alle elevene
+            //Student[] students = new Student[] { };
+            // bestemte meg for å bruke ei liste istedet for et array
+            List<Student> students = new List<Student>();
+            double input;
+            // infinite loop som programmet kjøres i ganske standard for konsoll applikasjoner
+            while (true)
+            {
+                // bare basic consol commands
+                Console.WriteLine("Hello, welcome to Snorre's Student Administrative system");
+                Console.WriteLine("CTRL + C to exit");
+                Console.WriteLine("What would you like to do?");
+                Console.WriteLine("1: Get all students");
+                Console.WriteLine("2: add a new student");
+                Console.WriteLine("3: Save to a text file");
+                input = Convert.ToDouble(Console.ReadLine());
+
+                if (input == 1)
+                {
+                    foreach (Student student in students)
+                    {
+                        Console.WriteLine("NAME: " + student.name);
+                        Console.WriteLine("GRADES: " + student.grades);
+                        Console.WriteLine("ABSENCE: " + student.absence);
+                    }
+                }
+                else if (input == 2)
+                {
+                    // lag ny elev med methoden eg har lagt og append eleven til listen
+                    Student new_student = add_student();
+                    students.Add(new_student);
+                    //Console.WriteLine(students);
+                }
+                else if (input == 3)
+                {
+                    // bruker ein writer klasse som skriver til filer
+                    // bruker Directory.GetCurrentDirectory() for å finne ut kvor prosjektet er
+                    using (var sw = new StreamWriter(Path.Combine(Directory.GetCurrentDirectory(), "students.txt")))
+                    {
+                        // for kvar elev i "students" så skriver den navn, karakterer of fravær
+                        foreach (var student in students)
+                        {
+                            Console.WriteLine(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "students.txt"));
+                            sw.WriteLineAsync($"NAME: {student.name}" +
+                                                    $", GRADES: {student.grades}" +
+                                                    $", ABSENCE: {student.absence}");
+                        }
+                    }
+                }
+                else
+                {
+                    // hvis du skriver noko annerledes enn 1 eller 2 så får du denne meldingen
+                    Console.WriteLine("this was not a valid input");
+                }
+            }
         }
     }
 }
