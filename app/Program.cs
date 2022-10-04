@@ -1,6 +1,6 @@
 ﻿using System;
 using System.IO;
-
+using CsvHelper;
 namespace MyApplication
 {
     // elev klasse som holder på verdier
@@ -50,6 +50,13 @@ namespace MyApplication
             // bestemte meg for å bruke ei liste istedet for et array
             List<Student> students = new List<Student>();
             double input;
+            // før programmet "starter" så lagrer eg alle elever som allerede fins til prosjektet
+            // bruker Directory.GetCurrentDirectory() for å finne ut kvor prosjektet er
+            using (var reader = new StreamReader(Path.Combine(Directory.GetCurrentDirectory(), "students.txt")))
+            using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
+            {
+                var records = csv.GetRecords<Student>();
+            }
             // infinite loop som programmet kjøres i ganske standard for konsoll applikasjoner
             while (true)
             {
@@ -59,7 +66,7 @@ namespace MyApplication
                 Console.WriteLine("What would you like to do?");
                 Console.WriteLine("1: Get all students");
                 Console.WriteLine("2: add a new student");
-                Console.WriteLine("3: Save to a text file");
+                Console.WriteLine("3: Save to a csv file");
                 input = Convert.ToDouble(Console.ReadLine());
 
                 if (input == 1)
@@ -82,12 +89,12 @@ namespace MyApplication
                 {
                     // bruker ein writer klasse som skriver til filer
                     // bruker Directory.GetCurrentDirectory() for å finne ut kvor prosjektet er
-                    using (var sw = new StreamWriter(Path.Combine(Directory.GetCurrentDirectory(), "students.txt")))
+                    using (var sw = new StreamWriter(Path.Combine(Directory.GetCurrentDirectory(), "students.csv")))
                     {
                         // for kvar elev i "students" så skriver den navn, karakterer of fravær
                         foreach (var student in students)
                         {
-                            Console.WriteLine(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "students.txt"));
+                            Console.WriteLine(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "students.csv"));
                             sw.WriteLineAsync($"NAME: {student.name}" +
                                                     $", GRADES: {student.grades}" +
                                                     $", ABSENCE: {student.absence}");
