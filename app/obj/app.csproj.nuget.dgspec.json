@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\SnorreSøvold\\Documents\\GitHub\\C-Sharp-skule\\app\\app.csproj": {}
+    "/home/snorresovold/C-Sharp-skule/app/app.csproj": {}
   },
   "projects": {
-    "C:\\Users\\SnorreSøvold\\Documents\\GitHub\\C-Sharp-skule\\app\\app.csproj": {
+    "/home/snorresovold/C-Sharp-skule/app/app.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\SnorreSøvold\\Documents\\GitHub\\C-Sharp-skule\\app\\app.csproj",
+        "projectUniqueName": "/home/snorresovold/C-Sharp-skule/app/app.csproj",
         "projectName": "app",
-        "projectPath": "C:\\Users\\SnorreSøvold\\Documents\\GitHub\\C-Sharp-skule\\app\\app.csproj",
-        "packagesPath": "C:\\Users\\SnorreSøvold\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\SnorreSøvold\\Documents\\GitHub\\C-Sharp-skule\\app\\obj\\",
+        "projectPath": "/home/snorresovold/C-Sharp-skule/app/app.csproj",
+        "packagesPath": "/home/snorresovold/.nuget/packages/",
+        "outputPath": "/home/snorresovold/C-Sharp-skule/app/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\SnorreSøvold\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "/home/snorresovold/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
@@ -49,8 +49,7 @@
             "net47",
             "net471",
             "net472",
-            "net48",
-            "net481"
+            "net48"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -59,7 +58,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/lib/dotnet/dotnet6-6.0.109/sdk/6.0.109/RuntimeIdentifierGraph.json"
         }
       }
     }

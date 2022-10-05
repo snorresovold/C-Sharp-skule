@@ -1,10 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "nZ/dLg+Q8P4Nd3cS7VFIYCDl13EBieO7lhU0nFThN7+Qbufgx3OfC8emRhhSWawAGiUryYxWIXi0iwphxzm3Bw==",
+  "dgSpecHash": "hgwzTZZRtZlO4McBJLyNTXngVphK2P7vxptZ0bjj9q/ylemOuYrM9toOQLtGrQGtptGORoNkaa9KVnLEeYtpkw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\SnorreSøvold\\Documents\\GitHub\\C-Sharp-skule\\app\\app.csproj",
+  "projectFilePath": "/home/snorresovold/C-Sharp-skule/app/app.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\SnorreSøvold\\.nuget\\packages\\csvhelper\\28.0.1\\csvhelper.28.0.1.nupkg.sha512"
+    "/home/snorresovold/.nuget/packages/csvhelper/28.0.1/csvhelper.28.0.1.nupkg.sha512"
   ],
   "logs": []
 }
