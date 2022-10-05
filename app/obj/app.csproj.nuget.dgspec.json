@@ -41,6 +41,10 @@
             "CsvHelper": {
               "target": "Package",
               "version": "[28.0.1, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.1, )"
             }
           },
           "imports": [

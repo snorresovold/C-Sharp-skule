@@ -30,3 +30,4 @@ C:/Users/SnorreSøvold/Documents/GitHub/C-Sharp-skule/app/obj/Debug/net6.0/ref/a
 /home/snorresovold/C-Sharp-skule/app/bin/Debug/net6.0/CsvHelper.dll
 /home/snorresovold/C-Sharp-skule/app/obj/Debug/net6.0/app.csproj.CopyComplete
 /home/snorresovold/C-Sharp-skule/app/obj/Debug/net6.0/app.genruntimeconfig.cache
+/home/snorresovold/C-Sharp-skule/app/bin/Debug/net6.0/Newtonsoft.Json.dll

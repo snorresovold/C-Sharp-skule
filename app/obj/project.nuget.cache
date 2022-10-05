@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "hgwzTZZRtZlO4McBJLyNTXngVphK2P7vxptZ0bjj9q/ylemOuYrM9toOQLtGrQGtptGORoNkaa9KVnLEeYtpkw==",
+  "dgSpecHash": "L0KDzCCEmkB20EhOihHNkucfa9aEN+81px36YkIChUabV2F2iLBF3nR9BmLmVrkHSZUY88sua2XFRV20t/2UDg==",
   "success": true,
   "projectFilePath": "/home/snorresovold/C-Sharp-skule/app/app.csproj",
   "expectedPackageFiles": [
-    "/home/snorresovold/.nuget/packages/csvhelper/28.0.1/csvhelper.28.0.1.nupkg.sha512"
+    "/home/snorresovold/.nuget/packages/csvhelper/28.0.1/csvhelper.28.0.1.nupkg.sha512",
+    "/home/snorresovold/.nuget/packages/newtonsoft.json/13.0.1/newtonsoft.json.13.0.1.nupkg.sha512"
   ],
   "logs": []
 }

@@ -1,6 +1,6 @@
 ﻿using System;
 using System.IO;
-using System.Text.Json;
+using Newtonsoft.Json;
 namespace MyApplication
 {
     // elev klasse som holder på verdier
@@ -54,10 +54,28 @@ namespace MyApplication
             List<Student> students = new List<Student>();
             double input;
             // før programmet "starter" så lagrer eg alle elever som allerede fins til prosjektet
+
+            // leser students.json filå
             string json_string = File.ReadAllText("students.json");
-            Console.WriteLine(json_string);
-            Student sus = JsonSerializer.Deserialize<Student>(json_string);
-            Console.WriteLine(sus);
+
+            //Console.WriteLine(json_string);
+            // try catch for eg har hatt erfaring med json deserialisering i golang å python, det er spesielt lurt å ha json logikk i try catch
+            // btw deserialisering er basically det motsatte en serialisering, altså det gjer bytes til objekter
+            try
+            {
+                // tar json stringen og deserialiserer den til ei liste med elever
+                List<Student> stored_students = JsonConvert.DeserializeObject<List<Student>>(json_string);
+
+                //Console.WriteLine(stored_students);
+
+                // legger de gamle elevene i hoved elev listen
+                students.AddRange(stored_students);
+            }
+            catch
+            {
+                // hvis det kommer ein error så kan programmet fortsatt kjøre og brukeren får beskjed
+                Console.WriteLine("got an error retrieving students");
+            }
 
             // infinite loop som programmet kjøres i ganske standard for konsoll applikasjoner
             while (true)
@@ -92,7 +110,7 @@ namespace MyApplication
                     // for kvar elev i "students" så serialiser dataen (gjer den om til bytes) og skriv den til students.json
                     foreach (Student student in students)
                     {
-                        string jsonString = JsonSerializer.Serialize(student);
+                        string jsonString = JsonConvert.SerializeObject(student);
 
                         //Console.WriteLine(jsonString);
                         File.WriteAllText(Path.Combine(Directory.GetCurrentDirectory(), "students.json"), jsonString);
