@@ -1,6 +1,8 @@
 ﻿using System;
 using System.IO;
 using Newtonsoft.Json;
+// basic elev admin konsoll prosjekt, koden er skrevet på engelsk, eg pleier p kommentere på englesk også men siden eg blir vurdert på de så er kommenterene på norsk
+
 namespace MyApplication
 {
     // elev klasse som holder på verdier
@@ -147,3 +149,4 @@ namespace MyApplication
         }
     }
 }
+// 150 linjer 😎
