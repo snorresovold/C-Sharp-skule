@@ -1,1 +1,4 @@
-{"name":"snorre","grades":3,"absence":40}
+[
+    {"name":"snorre","grades":3,"absence":40},
+    {"name":"patrick","grades":2,"absence":70}  
+]

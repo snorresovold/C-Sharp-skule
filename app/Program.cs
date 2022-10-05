@@ -1,17 +1,20 @@
 ﻿using System;
 using System.IO;
 using System.Text.Json;
-using System.Text.Json.Serialization;
 namespace MyApplication
 {
     // elev klasse som holder på verdier
-    class Student
+    public class Student
     {
-        public string name{ get; set; }
-        public double grades{ get; set; }
-        public int absence{ get; set; }
-        // gjer at verdiene er argumenter som må skrives in manuelt
 
+        public string name { get; set; }
+
+        public double grades { get; set; }
+
+        public int absence { get; set; }
+
+
+        // gjer at verdiene er argumenter som må skrives in manuelt
         public Student(string studentName, double studentGrades, int StudentAbsence)
         {
             name = studentName;
@@ -51,6 +54,10 @@ namespace MyApplication
             List<Student> students = new List<Student>();
             double input;
             // før programmet "starter" så lagrer eg alle elever som allerede fins til prosjektet
+            string json_string = File.ReadAllText("students.json");
+            Console.WriteLine(json_string);
+            Student sus = JsonSerializer.Deserialize<Student>(json_string);
+            Console.WriteLine(sus);
 
             // infinite loop som programmet kjøres i ganske standard for konsoll applikasjoner
             while (true)
@@ -82,11 +89,12 @@ namespace MyApplication
                 }
                 else if (input == 3)
                 {
+                    // for kvar elev i "students" så serialiser dataen (gjer den om til bytes) og skriv den til students.json
                     foreach (Student student in students)
                     {
                         string jsonString = JsonSerializer.Serialize(student);
 
-                        Console.WriteLine(jsonString);
+                        //Console.WriteLine(jsonString);
                         File.WriteAllText(Path.Combine(Directory.GetCurrentDirectory(), "students.json"), jsonString);
                     }
                 }
