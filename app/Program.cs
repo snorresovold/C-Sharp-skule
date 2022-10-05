@@ -7,10 +7,9 @@ namespace MyApplication
     // elev klasse som holder på verdier
     class Student
     {
-        public string name;
-        public double grades;
-        public int absence;
-
+        public string name{ get; set; }
+        public double grades{ get; set; }
+        public int absence{ get; set; }
         // gjer at verdiene er argumenter som må skrives in manuelt
 
         public Student(string studentName, double studentGrades, int StudentAbsence)
@@ -62,7 +61,7 @@ namespace MyApplication
                 Console.WriteLine("What would you like to do?");
                 Console.WriteLine("1: Get all students");
                 Console.WriteLine("2: add a new student");
-                Console.WriteLine("3: Save to a csv file");
+                Console.WriteLine("3: Save to a json file");
                 input = Convert.ToDouble(Console.ReadLine());
 
                 if (input == 1)
@@ -83,7 +82,13 @@ namespace MyApplication
                 }
                 else if (input == 3)
                 {
-                    
+                    foreach (Student student in students)
+                    {
+                        string jsonString = JsonSerializer.Serialize(student);
+
+                        Console.WriteLine(jsonString);
+                        File.WriteAllText(Path.Combine(Directory.GetCurrentDirectory(), "students.json"), jsonString);
+                    }
                 }
                 else
                 {
