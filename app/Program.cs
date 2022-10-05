@@ -86,11 +86,14 @@ namespace MyApplication
                 Console.WriteLine("What would you like to do?");
                 Console.WriteLine("1: Get all students");
                 Console.WriteLine("2: add a new student");
-                Console.WriteLine("3: Save to a json file");
+                Console.WriteLine("3: delete a student");
+                Console.WriteLine("4: Save to a json file");
+                // input er det som bruker skriver til konsollen
                 input = Convert.ToDouble(Console.ReadLine());
 
                 if (input == 1)
                 {
+                    // for kvar elev, skriv til konsollen verdiene deires
                     foreach (Student student in students)
                     {
                         Console.WriteLine("NAME: " + student.name);
@@ -107,14 +110,33 @@ namespace MyApplication
                 }
                 else if (input == 3)
                 {
-                    // for kvar elev i "students" så serialiser dataen (gjer den om til bytes) og skriv den til students.json
-                    foreach (Student student in students)
+                    Console.WriteLine("Who do you want to remove? Make sure to write their name correctly");
+                    string to_delete = Console.ReadLine();
+                    // har faktisk 0 peiling koffor men du trenger .ToList eller så får du ein error
+                    foreach (Student student in students.ToList())
                     {
-                        string jsonString = JsonConvert.SerializeObject(student);
-
-                        //Console.WriteLine(jsonString);
-                        File.WriteAllText(Path.Combine(Directory.GetCurrentDirectory(), "students.json"), jsonString);
+                        // hvis det er fleire elever med samme navn så kommer begge til å bli sletta, ser denna nå men drite litt i an akkuartt nå, får fiksa seinare
+                        // har også ToLower for å fikse hvis brukeren skriver det litt feil
+                        if (student.name.ToLower() == to_delete.ToLower())
+                        {
+                            // logger at ein bruker skal bli slettet så fjernes den fra students listå
+                            Console.WriteLine($"deleting {student.name}");
+                            students.Remove(student);
+                        }
+                        else
+                        {
+                            Console.WriteLine("There is no students with that name, are you sure you wrote it correctly?");
+                        }
                     }
+                }
+                else if (input == 4)
+                {
+                    // konverter students listå til ein json string med indented (vet ikkje ordet på norsk) formatering
+                    string json = JsonConvert.SerializeObject(students, Formatting.Indented);
+
+                    // skriv json stringen til students.json
+                    // bruker også Directory.GetCurrentDirectory() for å finne kvor programmet er i filsystemet
+                    File.WriteAllText(Path.Combine(Directory.GetCurrentDirectory(), "students.json"), json);
                 }
                 else
                 {
