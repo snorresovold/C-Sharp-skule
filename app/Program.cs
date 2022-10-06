@@ -2,6 +2,7 @@
 using System.IO;
 using Newtonsoft.Json;
 // basic elev admin konsoll prosjekt, koden er skrevet på engelsk, eg pleier p kommentere på englesk også men siden eg blir vurdert på de så er kommenterene på norsk
+// Link til prosjektet på Github: https://github.com/snorresovold/C-Sharp-skule
 
 namespace MyApplication
 {
