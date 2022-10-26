@@ -8,5 +8,10 @@
     "name": "patrick",
     "grades": 2.0,
     "absence": 29
+  },
+  {
+    "name": "teklemariam",
+    "grades": 6.0,
+    "absence": 0
   }
 ]
